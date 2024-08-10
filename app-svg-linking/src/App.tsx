@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { MyElm1 } from './components/MyElm1';
 import { MyElm2 } from './components/MyElm2';
 import { MyElm3 } from './components/MyElm3';
+import { MyElm4 } from './components/MyElm4';
+import { MyElm5 } from './components/MyElm5';
 
 import './App.css'
 
@@ -34,6 +36,20 @@ function App() {
                     transform='translate(100, 150)'
                 >
                     <MyElm3
+                        clickedCounter={clickedCounter}
+                    />
+                </g>
+                <g
+                    transform='translate(50, 80)'
+                >
+                    <MyElm4
+                        clickedCounter={clickedCounter}
+                    />
+                </g>
+                <g
+                    transform='translate(100, 300)'
+                >
+                    <MyElm5
                         clickedCounter={clickedCounter}
                     />
                 </g>
