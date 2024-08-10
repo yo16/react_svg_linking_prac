@@ -1,11 +1,18 @@
 import { useState } from "react";
 
-export function MyElm1() {
-    // ボタンの背景色
-    const [fillColor, setFillColor] = useState("#CBE2B5");
+interface MyElm1Props {
+    onClick: (e: React.MouseEvent<SVGElement>) => void
+}
 
-    function handleOnClick() {
+export function MyElm1({
+    onClick,
+}: MyElm1Props) {
+    // ボタンの背景色
+    const [fillColor, setFillColor] = useState<string>("#CBE2B5");
+
+    function handleOnClick(e: React.MouseEvent<SVGElement>) {
         console.log("Elm1 clicked!");
+        onClick(e);
     }
     function hnadleMouseEnter() {
         setFillColor("#BAC1A4");
@@ -31,8 +38,8 @@ export function MyElm1() {
                 cursor="pointer"
             >
                 <rect
-                    x={50}
-                    y={50}
+                    x={0}
+                    y={0}
                     width={150}
                     height={30}
                     rx={8}
@@ -40,10 +47,10 @@ export function MyElm1() {
                     fill={fillColor}
                 />
                 <text
-                    x={78}
-                    y={71}
+                    x={12}
+                    y={21}
                     fill={"#363"}
-                >Elm1 button</text>
+                >Elm1: Click Me!</text>
             </g>
         </>
     );
