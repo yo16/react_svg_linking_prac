@@ -1,9 +1,13 @@
+import { MyElm1 } from './components/MyElm1';
+
 import './App.css'
 
 function App() {
   return (
     <>
-      app
+      <svg>
+        <MyElm1 />
+      </svg>
     </>
   )
 }
