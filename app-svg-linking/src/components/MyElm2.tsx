@@ -43,7 +43,7 @@ export function MyElm2({
                     x={28}
                     y={21}
                     fill={"#000"}
-                >counter:{clickedCounter}</text>
+                >Elm2: {clickedCounter}</text>
             </g>
         </>
     )
