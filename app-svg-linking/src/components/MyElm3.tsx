@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-//import { motion } from "framer-motion";
 import { useAnimate } from "framer-motion";
 
 interface MyElm3Pros {
