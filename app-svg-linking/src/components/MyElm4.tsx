@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { motion, useAnimate } from "framer-motion";
+import { useAnimate } from "framer-motion";
 
 interface MyElm4Pros {
     isSwitchOn: boolean;
@@ -11,13 +11,13 @@ export function MyElm4({
 
     useEffect(() => {
         if (isSwitchOn) {
-            // 奇数の時、書く
+            // 描く
             animate("path",
                 { pathLength: 1 },
                 { duration: 2.0 }
             );
         } else {
-            // 偶数の時、消す
+            // 消す
             animate("path",
                 { pathLength: 0 }, 
                 { duration: 0.5 }
@@ -30,7 +30,7 @@ export function MyElm4({
             <g
                 ref={scope}
             >
-                <motion.path
+                <path
                     d={
                         "M 20 0 " +
                         "C 20 30, 10 130, -10 110 " +
@@ -41,7 +41,7 @@ export function MyElm4({
                     stroke="#fa6"
                     strokeWidth={2}
                     fill="none"
-                    initial={{ pathLength: 0 }}
+                    pathLength="0"
                     id="cablePath"
                 />
                 <text
@@ -51,10 +51,10 @@ export function MyElm4({
                 >
                     <textPath
                         href="#cablePath"
-                        startOffset="0.6"
-                        textLength="100"
+                        startOffset="0.5"
+                        textLength="150"
                     >
-                        伸びる線
+                        Elm4:伸びる線
                     </textPath>
                 </text>
             </g>
