@@ -15,13 +15,13 @@ export function MyElm5({
 
     useEffect(() => {
         if (isSwitchOn) {
-            // 奇数のときは、点灯
-            animate("rect", {fill: changedColor}, {delay: 2.0});
+            // 点灯
+            animate("rect", {fill: changedColor}, {delay: 2.0});    // 2秒後に開始
             setTimeout(()=>{
                 setTextOnOff("ON");
             }, 2.0*1000);
         } else {
-            // 偶数のときは、消灯
+            // 消灯
             animate("rect", {fill: stableColor}, {duration: 0.5});
             setTextOnOff("OFF");
         }
