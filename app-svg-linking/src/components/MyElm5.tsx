@@ -1,29 +1,31 @@
-import { useEffect } from "react";
-//import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { useAnimate } from "framer-motion";
 
 const stableColor: string = "#A28B55";
 const changedColor: string = "#fa0";
 
 interface MyElm5Pros {
-    clickedCounter: number;
+    isSwitchOn: boolean;
 }
 export function MyElm5({
-    clickedCounter
+    isSwitchOn
 }: MyElm5Pros) {
     const [scope, animate] = useAnimate();
+    const [textOnOff, setTextOnOff] = useState<string>("OFF");
 
     useEffect(() => {
-        if (clickedCounter>0) { // 初期を除く
-            if (clickedCounter % 2 === 0) {
-                // 偶数のときは、消灯
-                animate("rect", {fill: stableColor}, {duration: 0.5});
-            } else {
-                // 奇数のときは、点灯
-                animate("rect", {fill: changedColor}, {delay: 2});
-            }
+        if (isSwitchOn) {
+            // 奇数のときは、点灯
+            animate("rect", {fill: changedColor}, {delay: 2.0});
+            setTimeout(()=>{
+                setTextOnOff("ON");
+            }, 2.0*1000);
+        } else {
+            // 偶数のときは、消灯
+            animate("rect", {fill: stableColor}, {duration: 0.5});
+            setTextOnOff("OFF");
         }
-    }, [clickedCounter]);
+    }, [isSwitchOn]);
 
     return (
         <>
@@ -43,7 +45,12 @@ export function MyElm5({
                     x={28}
                     y={21}
                     fill={"#000"}
-                >Elm5: {clickedCounter}</text>
+                >Elm5: {textOnOff}</text>
+                <text
+                    x={160}
+                    y={21}
+                    fill={"#000"}
+                >遅延して連動</text>
             </g>
         </>
     )

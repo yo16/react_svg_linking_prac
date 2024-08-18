@@ -1,47 +1,29 @@
 import { useEffect } from "react";
 import { motion, useAnimate } from "framer-motion";
-//import { motion } from "framer-motion";
-
-//const draw = {
-//    hidden: { pathLength: 0, opacity: 0 },
-//    visible: (i: number) => {
-//      const delay: number = 1 + i * 0.5;
-//      return {
-//        pathLength: 1,
-//        opacity: 1,
-//        transition: {
-//          pathLength: { delay, type: "spring", duration: 1.5, bounce: 0 },
-//          opacity: { delay, duration: 0.01 }
-//        }
-//      };
-//    }
-//  };
 
 interface MyElm4Pros {
-    clickedCounter: number;
+    isSwitchOn: boolean;
 }
 export function MyElm4({
-    clickedCounter
+    isSwitchOn
 }: MyElm4Pros) {
     const [scope, animate] = useAnimate();
 
     useEffect(() => {
-        if (clickedCounter>0) {
-            if (clickedCounter%2 == 0) {
-                // 偶数の時、消す
-                animate("path",
-                    { pathLength: 0 }, 
-                    { duration: 0.5 }
-                )
-            } else {
-                // 奇数の時、書く
-                animate("path",
-                    { pathLength: 1 },
-                    { duration: 2 }
-                );
-            }
+        if (isSwitchOn) {
+            // 奇数の時、書く
+            animate("path",
+                { pathLength: 1 },
+                { duration: 2.0 }
+            );
+        } else {
+            // 偶数の時、消す
+            animate("path",
+                { pathLength: 0 }, 
+                { duration: 0.5 }
+            );
         }
-    }, [clickedCounter]);
+    }, [isSwitchOn]);
 
     return (
         <>
@@ -51,15 +33,30 @@ export function MyElm4({
                 <motion.path
                     d={
                         "M 20 0 " +
-                        "C 20 40, -10 40, -10 20 " +
-                        "C -10 0, 20 0, 20 50 " +
-                        "C 20 170, -30 235, 50 235"
+                        "C 20 30, 10 130, -10 110 " +
+                        "C -20 100, 0 70, 20 90 " +
+                        "C 40 110, -40 205, -10 235 " +
+                        "C 0 245, 30 235, 50 235"
                     }
                     stroke="#fa6"
                     strokeWidth={2}
                     fill="none"
                     initial={{ pathLength: 0 }}
+                    id="cablePath"
                 />
+                <text
+                    x={-20}
+                    y={50}
+                    fill={"#000"}
+                >
+                    <textPath
+                        href="#cablePath"
+                        startOffset="0.6"
+                        textLength="100"
+                    >
+                        伸びる線
+                    </textPath>
+                </text>
             </g>
         </>
     )

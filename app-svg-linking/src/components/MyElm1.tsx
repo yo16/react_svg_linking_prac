@@ -50,7 +50,7 @@ export function MyElm1({
                     x={12}
                     y={21}
                     fill={"#363"}
-                >Elm1: Click Me!</text>
+                >Elm1: スイッチ</text>
             </g>
         </>
     );

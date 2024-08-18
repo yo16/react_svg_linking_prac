@@ -6,24 +6,22 @@ const stableColor: string = "#A28B55";
 const changedColor: string = "#ff0";
 
 interface MyElm2Pros {
-    clickedCounter: number;
+    isSwitchOn: boolean;
 }
 export function MyElm2({
-    clickedCounter
+    isSwitchOn
 }: MyElm2Pros) {
     const [scope, animate] = useAnimate();
 
     useEffect(() => {
-        if (clickedCounter>0) { // 初期を除く
-            if (clickedCounter % 2 === 0) {
-                // 偶数のときは、消灯
-                animate("rect", {fill: stableColor}, {duration: 1});
-            } else {
-                // 奇数のときは、点灯
-                animate("rect", {fill: changedColor}, {duration: 1});
-            }
+        if (isSwitchOn) {
+            // 点灯
+            animate("rect", {fill: changedColor}, {duration: 1});
+        } else {
+            // 消灯
+            animate("rect", {fill: stableColor}, {duration: 1});
         }
-    }, [clickedCounter]);
+    }, [isSwitchOn]);
 
     return (
         <>
@@ -43,7 +41,12 @@ export function MyElm2({
                     x={28}
                     y={21}
                     fill={"#000"}
-                >Elm2: {clickedCounter}</text>
+                >Elm2: {isSwitchOn? "ON": "OFF"}</text>
+                <text
+                    x={160}
+                    y={21}
+                    fill={"#000"}
+                >スイッチと即時連動</text>
             </g>
         </>
     )

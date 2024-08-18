@@ -29,28 +29,28 @@ function App() {
                     transform='translate(100, 100)'
                 >
                     <MyElm2
-                        clickedCounter={clickedCounter}
+                        isSwitchOn={clickedCounter%2!==0}
                     />
                 </g>
                 <g
                     transform='translate(100, 150)'
                 >
                     <MyElm3
-                        clickedCounter={clickedCounter}
+                        isSwitchOn={clickedCounter%2!==0}
                     />
                 </g>
                 <g
                     transform='translate(50, 80)'
                 >
                     <MyElm4
-                        clickedCounter={clickedCounter}
+                        isSwitchOn={clickedCounter%2!==0}
                     />
                 </g>
                 <g
                     transform='translate(100, 300)'
                 >
                     <MyElm5
-                        clickedCounter={clickedCounter}
+                        isSwitchOn={clickedCounter%2!==0}
                     />
                 </g>
             </svg>

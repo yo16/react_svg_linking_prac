@@ -3,24 +3,22 @@ import { useEffect } from "react";
 import { useAnimate } from "framer-motion";
 
 interface MyElm3Pros {
-    clickedCounter: number;
+    isSwitchOn: boolean;
 }
 export function MyElm3({
-    clickedCounter
+    isSwitchOn
 }: MyElm3Pros) {
     const [scope, animate] = useAnimate();
 
     useEffect(() => {
-        if (clickedCounter>0) { // 初期を除く
-            if (clickedCounter % 2 === 0) {
-                // 偶数のときは、縮める
-                animate("rect", {height: 30}, { type: "spring", stiffness: 1000, damping: 40});
-            } else {
-                // 奇数のときは、伸ばす
-                animate("rect", {height: 100}, { type: "spring", stiffness: 500, damping: 10});
-            }
+        if (isSwitchOn) {
+            // 伸ばす
+            animate("rect", {height: 100}, { type: "spring", stiffness: 700, damping: 10});
+        } else {
+            // 縮める
+            animate("rect", {height: 30}, { type: "spring", stiffness: 1000, damping: 30});
         }
-    }, [clickedCounter]);
+    }, [isSwitchOn]);
 
     return (
         <>
@@ -40,7 +38,12 @@ export function MyElm3({
                     x={28}
                     y={21}
                     fill={"#000"}
-                >Elm3: {(clickedCounter%2===0)? "close": "open"}</text>
+                >Elm3: {isSwitchOn? "open": "close"}</text>
+                <text
+                    x={160}
+                    y={21}
+                    fill={"#000"}
+                >バネで伸縮</text>
             </g>
         </>
     )
